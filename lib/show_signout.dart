@@ -4,7 +4,7 @@ import 'package:login/widget/authen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ShowSignOut extends StatelessWidget {
-  const ShowSignOut({ Key? key }) : super(key: key);
+  const ShowSignOut({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,8 @@ class ShowSignOut extends StatelessWidget {
             size: 36,
             color: Colors.white,
           ),
-          title: MyStyle().titleH4('Logoff'),
-          subtitle: MyStyle().titleH5('ต้องการกลับไปหน้า Login'),
+          title: MyStyle().titleH4('ออกจากระบบ'),
+          subtitle: MyStyle().titleH5('กลับไปหน้า เข้าสู่ระบบ'),
         ),
       ],
     );

@@ -1,3 +1,4 @@
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:login/bodys/show_manage.dart';
@@ -9,6 +10,7 @@ import 'package:login/router.dart';
 import 'package:login/show_signout.dart';
 import 'package:login/utility/my_style.dart';
 import 'package:login/widget/authen.dart';
+import 'package:login/widget/editprofile.dart';
 import 'package:login/widget/newhome.dart';
 import 'package:login/widget/newhome1.dart';
 import 'package:login/widget/newhome2.dart';
@@ -99,14 +101,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                 'https://travel1997zz.000webhostapp.com/profile/$profilePer'),
                     accountName: Text(nameUser.toString(),
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.black)),
-                    accountEmail: Text('Login',
-                        style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black))),
+                    accountEmail: Row(
+                      children: [
+                        MyStyle().mySizebox(),
+                        // Text('Login',
+                        //     style: TextStyle(
+                        //         fontSize: 17,
+                        //         fontWeight: FontWeight.bold,
+                        //         color: Colors.black)),
+                        IconButton(icon: Icon(Icons.info), onPressed: () {
+                          Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => EditPF()));
+                        }),
+                      ],
+                    )),
                 menuShowOrder(),
                 menuShowManage(),
                 menuShowProduct()

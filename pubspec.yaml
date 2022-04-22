@@ -38,7 +38,8 @@ dependencies:
   shared_preferences: ^2.0.13
   cached_network_image: ^3.2.0
   geocoding: ^2.0.4
-  geolocator: ^8.0.5
+  geolocator: ^7.1.0
+  location: ^4.2.2
   
 
   

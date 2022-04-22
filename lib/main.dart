@@ -12,6 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: routes,
       initialRoute: '/authen',
+    debugShowCheckedModeBanner: false,
+
     );
   }
 }

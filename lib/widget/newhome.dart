@@ -3,10 +3,8 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:login/model/user_member.dart';
 import 'package:login/model/user_tourist.dart';
 import 'package:login/states/show_productnewhome.dart';
-import 'package:login/widget/home.dart';
 
 class Newhome extends StatefulWidget {
   const Newhome({Key? key}) : super(key: key);

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:login/model/user_tourist.dart';
+import 'package:login/utility/my_dialog.dart';
 import 'package:login/utility/my_style.dart';
 
+//หน้าต่างโชว์หน้าของรายละเอียดร้านค้า
 class ShowProduct extends StatefulWidget {
   final UserModel2 userModel2;
   const ShowProduct({Key? key, required this.userModel2}) : super(key: key);
@@ -15,23 +17,67 @@ class _ShowProductState extends State<ShowProduct> {
   UserModel2? userModel2;
   List<UserModel2> userModels = [];
   String? resultCode;
+  double? lat, lng;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     userModel2 = widget.userModel2;
-    findLatLng();
+    checkPermission();
   }
 
-  Future<Null> findLatLng() async {
+  //ส่วนของ Location
+  Future<Null> checkPermission() async {
     bool locationService;
     LocationPermission locationPermission;
 
     locationService = await Geolocator.isLocationServiceEnabled();
     if (locationService) {
       print('Service Location Open');
+
+      locationPermission = await Geolocator.checkPermission();
+      if (locationPermission == LocationPermission.denied) {
+        locationPermission = await Geolocator.requestPermission();
+        if (locationPermission == LocationPermission.deniedForever) {
+          MyDialog().alertLocationService(
+              context, 'ไม่อนุญาติแชร์ Location', 'โปรดแชร์ Location');
+        } else {
+          //Find LatLng
+          findLatLng();
+        }
+      } else {
+        if (locationPermission == LocationPermission.deniedForever) {
+          MyDialog().alertLocationService(
+              context, 'ไม่อนุญาติแชร์ Location', 'โปรดแชร์ Location');
+        } else {
+          //Find LatLng
+          findLatLng();
+        }
+      }
     } else {
       print('Service Location Close');
+      MyDialog().alertLocationService(
+          context, 'Location Service ปิดอยู่', 'กรุณาเปิด Location Service');
+    }
+  }
+
+  Future<Null> findLatLng() async {
+    print('findLatLng ==> Work');
+    Position? position = await findPosition();
+    setState(() {
+      lat = position!.latitude;
+      lng = position.longitude;
+      print('lat = $lat, lng = $lng');
+    });
+  }
+
+  Future<Position?> findPosition() async {
+    Position position;
+    try {
+      position = await Geolocator.getCurrentPosition();
+      return position;
+    } catch (e) {
+      return null;
     }
   }
 
@@ -67,12 +113,9 @@ class _ShowProductState extends State<ShowProduct> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  // Text(
-                  //   'ราคา: ',
-                  //   style: TextStyle(fontWeight: FontWeight.bold),
-                  // ),
+                  // ส่วนของการโชว์ค่า สิ่งอำนวยความสะดวกของสถานที่
                   Text(
-                    userModel2 == null
+                    userModel2!.price.toString() == ''
                         ? ''
                         : 'ราคา: ${userModel2!.price.toString()}',
                     style: TextStyle(fontSize: 15, color: Colors.black),
@@ -84,7 +127,7 @@ class _ShowProductState extends State<ShowProduct> {
                 children: [
                   // Text('ค่าบริการ: '),
                   Text(
-                    userModel2 == null
+                    userModel2!.serviceRate.toString() == ''
                         ? ''
                         : 'ค่าบริการ: ${userModel2!.serviceRate.toString()}',
                     style: TextStyle(fontSize: 15, color: Colors.black),
@@ -96,7 +139,7 @@ class _ShowProductState extends State<ShowProduct> {
                 children: [
                   // Text('เวลาเปิด: '),
                   Text(
-                    userModel2 == null
+                    userModel2!.timeOpen.toString() == ''
                         ? ''
                         : 'เวลาเปิด: ${userModel2!.timeOpen.toString()}',
                     style: TextStyle(fontSize: 15, color: Colors.black),
@@ -108,7 +151,7 @@ class _ShowProductState extends State<ShowProduct> {
                 children: [
                   // Text('เวลาปิด: '),
                   Text(
-                    userModel2 == null
+                    userModel2!.timeClose.toString() == ''
                         ? ''
                         : 'เวลาปิด: ${userModel2!.timeClose.toString()}',
                     style: TextStyle(fontSize: 15, color: Colors.black),
@@ -120,7 +163,7 @@ class _ShowProductState extends State<ShowProduct> {
                 children: [
                   // Text('เบอร์ติดต่อ: '),
                   Text(
-                    userModel2 == null
+                    userModel2!.contactTel.toString() == ''
                         ? ''
                         : 'เบอร์ติดต่อ: ${userModel2!.contactTel.toString()}',
                     style: TextStyle(fontSize: 15, color: Colors.black),
@@ -131,41 +174,15 @@ class _ShowProductState extends State<ShowProduct> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  // Text('เบอร์ติดต่อ: '),
+                  // Text('แฟนเพจ: '),
                   Text(
-                    userModel2 == null
+                    userModel2!.linkWeb.toString() == ''
                         ? ''
-                        : 'แฟนเพจ: ${userModel2!.linkWeb.toString()}',
+                        : 'แฟนเพจ: ${userModel2!.linkWeb.toString()},',
                     style: TextStyle(fontSize: 15, color: Colors.black),
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  // Text('เบอร์ติดต่อ: '),
-                  Text(
-                    cutWord(
-                      'Location: ${userModel2!.location.toString()}',
-                    ),
-                    // userModel2 == null
-                    //     ? ''
-                    //     : 'Location: ${userModel2!.location.toString()}',
-
-                    style: TextStyle(fontSize: 15, color: Colors.black),
-                  ),
-                ],
-              ),
-              // Row(
-              //   children: [
-              //     Icon(Icons.remove_red_eye_outlined,
-              //         color: Color.fromARGB(255, 255, 240, 0)),
-              //     Text(
-              //       'จำนวนผู้เข้าชม ${userModel2!.score.toString()}',
-              //       style: TextStyle(fontSize: 18),
-              //     )
-              //   ],
-              // ),
               showMap(),
             ],
           ),
@@ -174,6 +191,7 @@ class _ShowProductState extends State<ShowProduct> {
     );
   }
 
+  //  ส่วนของหน้าต่าง โชว์ googleMap
   Container showMap() {
     return Container(
       margin: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
@@ -182,6 +200,7 @@ class _ShowProductState extends State<ShowProduct> {
     );
   }
 
+  // ส่วนของโชว์ รูปโปรไฟล์
   Widget showImage() {
     return Container(
         width: MediaQuery.of(context).size.width,
@@ -192,8 +211,9 @@ class _ShowProductState extends State<ShowProduct> {
         ));
   }
 
-  String cutWord(String location) {
-    String result = location;
+  //ส่วนเอาไว้ตัดคำ ที่เป็นเกินขอบจอโทรศัพท์
+  String cutWord(String linkWeb) {
+    String result = linkWeb;
     if (result.length > 14) {
       result = result.substring(0, 40);
       result = '$result ...';
