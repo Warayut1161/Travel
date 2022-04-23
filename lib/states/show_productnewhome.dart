@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:login/model/user_tourist.dart';
 import 'package:login/utility/my_dialog.dart';
 import 'package:login/utility/my_style.dart';
@@ -18,8 +19,10 @@ class _ShowProductState extends State<ShowProduct> {
   List<UserModel2> userModels = [];
   String? resultCode;
   double? lat, lng;
+
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     userModel2 = widget.userModel2;
@@ -184,6 +187,7 @@ class _ShowProductState extends State<ShowProduct> {
                 ],
               ),
               showMap(),
+              MyStyle().mySizebox(),
             ],
           ),
         ),
@@ -194,9 +198,18 @@ class _ShowProductState extends State<ShowProduct> {
   //  ส่วนของหน้าต่าง โชว์ googleMap
   Container showMap() {
     return Container(
-      margin: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
-      color: Colors.grey,
-      height: 250,
+      width: double.infinity,
+      height: 300,
+      child: GoogleMap(
+        myLocationEnabled: true,
+        initialCameraPosition:
+            CameraPosition(target: LatLng(lat!, lng!), zoom: 16),
+        onMapCreated: (controller) => {},
+      ),
+
+      // margin: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
+      // color: Colors.grey,
+      // height: 250,
     );
   }
 
