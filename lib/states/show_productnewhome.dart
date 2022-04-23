@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:login/model/user_tourist.dart';
 import 'package:login/utility/my_dialog.dart';
 import 'package:login/utility/my_style.dart';
+import 'package:login/widget/show_progress.dart';
 
 //หน้าต่างโชว์หน้าของรายละเอียดร้านค้า
 class ShowProduct extends StatefulWidget {
@@ -195,23 +196,36 @@ class _ShowProductState extends State<ShowProduct> {
     );
   }
 
+  Set<Marker> setMarker() => <Marker>[
+        Marker(
+          markerId: MarkerId('id'),
+          position: LatLng(lat!, lng!),
+          infoWindow: InfoWindow(
+              title: 'คุณอยู่ที่นี่', snippet: 'Lat = $lat, lng = $lng'),
+        ),
+      ].toSet();
   //  ส่วนของหน้าต่าง โชว์ googleMap
-  Container showMap() {
-    return Container(
-      width: double.infinity,
-      height: 300,
-      child: GoogleMap(
-        myLocationEnabled: true,
-        initialCameraPosition:
-            CameraPosition(target: LatLng(lat!, lng!), zoom: 16),
-        onMapCreated: (controller) => {},
-      ),
+  Widget showMap() => Container(
+        width: double.infinity,
+        height: 300,
+        child: lat == null
+            ? ShowProgress()
+            : GoogleMap(
+                myLocationEnabled: true,
+                initialCameraPosition: CameraPosition(
+                    target: LatLng(
+                        // lat ?? 14.03692745958125, lng ?? 100.73508633939616),
+                        lat!,
+                        lng!),
+                    zoom: 16),
+                onMapCreated: (controller) => {},
+                markers: setMarker(),
+              ),
 
-      // margin: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
-      // color: Colors.grey,
-      // height: 250,
-    );
-  }
+        // margin: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
+        // color: Colors.grey,
+        // height: 250,
+      );
 
   // ส่วนของโชว์ รูปโปรไฟล์
   Widget showImage() {

@@ -40,8 +40,8 @@ class _AuthenState extends State<Authen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 buildLogo(),
-                MyStyle().titleH1('Location recommendation'),
-                MyStyle().titleH1('system in Chonburi province'),
+                MyStyle().titleH1('ระบบแนะนำสถานที่ภายในจังหวัดชลบุรี'),
+                // MyStyle().titleH1('system in Chonburi province'),
                 buildUser(),
                 buildPassword(),
                 buildLogin(),
