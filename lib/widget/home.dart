@@ -1,6 +1,6 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:login/bodys/show_festival.dart';
 import 'package:login/bodys/show_manage.dart';
 import 'package:login/bodys/show_order.dart';
 import 'package:login/bodys/show_product.dart';
@@ -112,15 +112,20 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         //         fontSize: 17,
                         //         fontWeight: FontWeight.bold,
                         //         color: Colors.black)),
-                        IconButton(icon: Icon(Icons.info), onPressed: () {
-                          Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => EditPF()));
-                        }),
+                        IconButton(
+                            icon: Icon(Icons.info),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditPF()));
+                            }),
                       ],
                     )),
                 menuShowOrder(),
                 menuShowManage(),
-                menuShowProduct()
+                menuShowProduct(),
+                menuShowFestival()
               ],
             )
           ],
@@ -211,6 +216,26 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       leading: Icon(Icons.hotel),
       title: Text(
         'ที่พัก',
+        style: TextStyle(
+            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+      ),
+    );
+  }
+
+  ListTile menuShowFestival() {
+    return ListTile(
+      onTap: () {
+        setState(() {
+          _selectedIndex = 2;
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ShowFestival()),
+          );
+        });
+      },
+      leading: Icon(Icons.festival),
+      title: Text(
+        'เทศกาล',
         style: TextStyle(
             fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
       ),

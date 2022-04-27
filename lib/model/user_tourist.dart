@@ -19,28 +19,33 @@ class UserModel2 {
   String? imgProfile5;
   String? statusView;
   String? score;
+  String? lat;
+  String? lng;
 
-  UserModel2(
-      {this.idTourist,
-      this.memberId,
-      this.idCom,
-      this.nameTra = '',
-      this.location,
-      this.price,
-      this.serviceRate,
-      this.timeOpen,
-      this.timeClose,
-      this.history,
-      this.contactTel,
-      this.detail,
-      this.linkWeb,
-      this.imgProfile = '',
-      this.imgProfile2,
-      this.imgProfile3,
-      this.imgProfile4,
-      this.imgProfile5,
-      this.statusView,
-      this.score});
+  UserModel2({
+    this.idTourist,
+    this.memberId,
+    this.idCom,
+    this.nameTra = '',
+    this.location,
+    this.price,
+    this.serviceRate,
+    this.timeOpen,
+    this.timeClose,
+    this.history,
+    this.contactTel,
+    this.detail,
+    this.linkWeb,
+    this.imgProfile = '',
+    this.imgProfile2,
+    this.imgProfile3,
+    this.imgProfile4,
+    this.imgProfile5,
+    this.statusView,
+    this.score,
+    this.lat,
+    this.lng,
+  });
 
   UserModel2.fromJson(Map<String, dynamic> json) {
     idTourist = json['id_tourist'];
@@ -63,6 +68,8 @@ class UserModel2 {
     imgProfile5 = json['img_profile5'];
     statusView = json['status_view'];
     score = json['score'];
+    lat = json['lat'];
+    lng = json['lng'];
   }
 
   Map<String, dynamic> toJson() {
@@ -87,6 +94,8 @@ class UserModel2 {
     data['img_profile5'] = this.imgProfile5;
     data['status_view'] = this.statusView;
     data['score'] = this.score;
+    data['lat'] = this.lat;
+    data['lng'] = this.lng;
     return data;
   }
 }

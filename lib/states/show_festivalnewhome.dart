@@ -7,15 +7,15 @@ import 'package:login/utility/my_style.dart';
 import 'package:login/widget/show_progress.dart';
 
 //หน้าต่างโชว์หน้าของรายละเอียดร้านค้า
-class ShowProduct extends StatefulWidget {
+class ShowFestivalnewhome extends StatefulWidget {
   final UserModel2 userModel2;
-  const ShowProduct({Key? key, required this.userModel2}) : super(key: key);
+  const ShowFestivalnewhome({Key? key, required this.userModel2}) : super(key: key);
 
   @override
-  State<ShowProduct> createState() => _ShowProductState();
+  State<ShowFestivalnewhome> createState() => _ShowFestivalnewhomeState();
 }
 
-class _ShowProductState extends State<ShowProduct> {
+class _ShowFestivalnewhomeState extends State<ShowFestivalnewhome> {
   UserModel2? userModel2;
   List<UserModel2> userModels = [];
   String? resultCode;
@@ -195,7 +195,7 @@ class _ShowProductState extends State<ShowProduct> {
                   ),
                 ],
               ),
-              showMap(),
+              // showMap(),
               MyStyle().mySizebox(),
             ],
           ),
@@ -216,32 +216,32 @@ class _ShowProductState extends State<ShowProduct> {
       ].toSet();
   //  ส่วนของหน้าต่าง โชว์ googleMap
   
-  Widget showMap() => Container(
-        width: double.infinity,
-        height: 300,
-        child: lat1 == null
-            ? ShowProgress()
-            : GoogleMap(
-                myLocationEnabled: true,
-                initialCameraPosition:  CameraPosition(
-                    // target: latLng!,
-                    target: LatLng(
-                       double.parse(
-                        userModel2!.lat.toString(),
-                      ),
-                      double.parse(
-                        userModel2!.lng.toString(),
-                      ),
-                    ),
-                    zoom: 16),
-                onMapCreated: (controller) => {},
-                markers: setMarker(),
-              ),
+  // Widget showMap() => Container(
+  //       width: double.infinity,
+  //       height: 300,
+  //       child: lat1 == null
+  //           ? ShowProgress()
+  //           : GoogleMap(
+  //               myLocationEnabled: true,
+  //               initialCameraPosition:  CameraPosition(
+  //                   // target: latLng!,
+  //                   target: LatLng(
+  //                      double.parse(
+  //                       userModel2!.lat.toString(),
+  //                     ),
+  //                     double.parse(
+  //                       userModel2!.lng.toString(),
+  //                     ),
+  //                   ),
+  //                   zoom: 16),
+  //               onMapCreated: (controller) => {},
+  //               markers: setMarker(),
+  //             ),
 
         // margin: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
         // color: Colors.grey,
         // height: 250,
-      );
+      // );
 
   // ส่วนของโชว์ รูปโปรไฟล์
   Widget showImage() {
