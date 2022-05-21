@@ -4,6 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
 
+//----------------แก้ไขข้อมูล ส่วนนี้ยังไม่ได้ใช้-----------------//
+
 class EditPF extends StatefulWidget {
   const EditPF({Key? key}) : super(key: key);
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//-------------โชว์หน้าแรกในส่วนแถบของบันทึกไว้------------//
+
 class Newhome3 extends StatefulWidget {
   const Newhome3({Key? key}) : super(key: key);
 

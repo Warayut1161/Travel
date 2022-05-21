@@ -8,6 +8,7 @@ import 'package:login/main.dart';
 import 'package:login/model/user_member.dart';
 import 'package:login/router.dart';
 import 'package:login/show_signout.dart';
+import 'package:login/states/show_editshop.dart';
 import 'package:login/utility/my_style.dart';
 import 'package:login/widget/authen.dart';
 import 'package:login/widget/editprofile.dart';
@@ -16,14 +17,12 @@ import 'package:login/widget/newhome1.dart';
 import 'package:login/widget/newhome2.dart';
 import 'package:login/widget/newhome3.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:login/widget/show_progress.dart';
 
-//---------------หน้าแรกของสมาชิก---------------------//
+//---------------หน้าแรกของแอดมิน---------------------//
+void main() => runApp(const HomeAdmin());
 
-void main() => runApp(const Home());
-
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeAdmin extends StatelessWidget {
+  const HomeAdmin({Key? key}) : super(key: key);
 
   static const String _title = 'Flutter Code Sample';
 
@@ -96,7 +95,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               children: [
                 UserAccountsDrawerHeader(
                     currentAccountPicture: profilePer == null
-                        ? ShowProgress()
+                        ? Image.asset('images/logo.png')
                         : CachedNetworkImage(
                             errorWidget: (context, url, error) =>
                                 Image.asset('images/logo.png'),
@@ -128,7 +127,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 menuShowOrder(),
                 menuShowManage(),
                 menuShowProduct(),
-                menuShowFestival()
+                menuShowFestival(),
+                menuShowEditPlofile()
               ],
             )
           ],
@@ -165,7 +165,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 
-//------------------แถบซ้าย------------------//
   ListTile menuShowOrder() {
     return ListTile(
       onTap: () {
@@ -240,6 +239,26 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       leading: Icon(Icons.festival),
       title: Text(
         'เทศกาล',
+        style: TextStyle(
+            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+      ),
+    );
+  }
+
+  ListTile menuShowEditPlofile() {
+    return ListTile(
+      onTap: () {
+        setState(() {
+          _selectedIndex = 2;
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ShowEditshop()),
+          );
+        });
+      },
+      leading: Icon(Icons.edit),
+      title: Text(
+        'แก้ไขข้อมูลร้านค้า',
         style: TextStyle(
             fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
       ),

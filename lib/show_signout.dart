@@ -3,6 +3,8 @@ import 'package:login/utility/my_style.dart';
 import 'package:login/widget/authen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+//--------------โชว์ปุ่ม Logout----------------//
+
 class ShowSignOut extends StatelessWidget {
   const ShowSignOut({Key? key}) : super(key: key);
 

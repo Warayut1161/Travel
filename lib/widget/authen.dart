@@ -7,7 +7,13 @@ import 'package:login/model/user_member.dart';
 import 'package:login/utility/my_style.dart';
 import 'package:login/utility/normal_dialog.dart';
 import 'package:login/widget/home.dart';
+import 'package:login/widget/homeadmin.dart';
+import 'package:login/widget/homeshop.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+
+//-----------------หน้าล๊อคอิน-----------//
+
 
 class Authen extends StatefulWidget {
   const Authen({Key? key}) : super(key: key);
@@ -59,9 +65,9 @@ class _AuthenState extends State<Authen> {
         child: RaisedButton(
           color: MyStyle().darkColor,
           onPressed: () {
-            if (user == null ||
+            if (user == '' ||
                 user!.isEmpty ||
-                password == null ||
+                password == '' ||
                 password!.isEmpty) {
               normalDialog(context, 'กรุณากรอกข้อมูลให้ครบ');
             } else {
@@ -83,19 +89,18 @@ class _AuthenState extends State<Authen> {
 
       var result = json.decode(response.data);
       print('result = $result');
-
+      // print('พาสเวิด = $password');
       for (var map in result) {
         UserModel userModel = UserModel.fromJson(map);
-
         print(userModel.memberPassword);
         if (password == userModel.memberPassword) {
           String? statusUser = userModel.statusUser;
           if (statusUser == '1') {
-            routeTuService(Home(), userModel);
+            routeTuService(HomeAdmin(), userModel);
           } else if (statusUser == '2') {
-            routeTuService(Home(), userModel);
+            routeTuService(HomeAdmin(), userModel);
           } else if (statusUser == '3') {
-            routeTuService(Home(), userModel);
+            routeTuService(HomeShop(), userModel);
           } else if (statusUser == '4') {
             routeTuService(Home(), userModel);
           } else {

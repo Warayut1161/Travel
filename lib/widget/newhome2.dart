@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:login/model/user_member.dart';
 
+//-------------โชว์หน้าแรกในส่วนแถบของรีวิวร้านค้าต่างๆ------------//
+
 class Newhome2 extends StatefulWidget {
   const Newhome2({Key? key}) : super(key: key);
 

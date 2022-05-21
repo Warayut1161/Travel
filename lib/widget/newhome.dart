@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:login/model/user_tourist.dart';
 import 'package:login/states/show_productnewhome.dart';
 
+//----------------ข้อมูลที่โชว์ของหน้าแรก------------------//
+
 class Newhome extends StatefulWidget {
   const Newhome({Key? key}) : super(key: key);
 
@@ -54,6 +56,7 @@ class _NewhomeState extends State<Newhome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: GridView.builder(
         itemCount: userModels.length,
         gridDelegate:

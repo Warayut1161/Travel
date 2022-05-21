@@ -6,7 +6,7 @@ import 'package:login/utility/my_dialog.dart';
 import 'package:login/utility/my_style.dart';
 import 'package:login/widget/show_progress.dart';
 
-//หน้าต่างโชว์หน้าของรายละเอียดร้านค้า
+//----------------หน้าต่างโชว์หน้าของรายละเอียดร้านค้า-------------------------//
 class ShowProduct extends StatefulWidget {
   final UserModel2 userModel2;
   const ShowProduct({Key? key, required this.userModel2}) : super(key: key);

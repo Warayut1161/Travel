@@ -11,8 +11,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: routes,
+       debugShowCheckedModeBanner: false,
       initialRoute: '/authen',
-    debugShowCheckedModeBanner: false,
+      
 
     );
   }

@@ -63,6 +63,7 @@ class MyStyle {
           color: Colors.white,
         ),
       );
+      
   SizedBox mySizebox() => SizedBox(
         width: 8.0,
         height: 16.0,
