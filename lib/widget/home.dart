@@ -30,6 +30,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: _title,
       home: MyStatefulWidget(),
     );
@@ -110,19 +111,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     accountEmail: Row(
                       children: [
                         MyStyle().mySizebox(),
-                        // Text('Login',
-                        //     style: TextStyle(
-                        //         fontSize: 17,
-                        //         fontWeight: FontWeight.bold,
-                        //         color: Colors.black)),
-                        IconButton(
-                            icon: Icon(Icons.info),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => EditPF()));
-                            }),
+                        Text('Login',
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black)),
+                        // IconButton(
+                        //     icon: Icon(Icons.info),
+                        //     onPressed: () {
+                        //       Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //               builder: (context) => EditPF()));
+                        //     }),
                       ],
                     )),
                 menuShowOrder(),

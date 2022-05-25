@@ -29,6 +29,7 @@ class HomeAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: _title,
       home: MyStatefulWidget(),
     );
@@ -253,6 +254,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const ShowEditshop()),
+            
           );
         });
       },
