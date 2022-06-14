@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:login/model/user_tourist.dart';
 import 'package:login/utility/my_dialog.dart';
 import 'package:login/utility/my_style.dart';
+import 'package:login/widget/editcomment.dart';
 import 'package:login/widget/show_progress.dart';
 
 //----------------หน้าต่างโชว์หน้าของรายละเอียดร้านค้า-------------------------//
@@ -195,12 +196,29 @@ class _ShowProductState extends State<ShowProduct> {
                   ),
                 ],
               ),
+              buildReview(),
               showMap(),
               MyStyle().mySizebox(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Row buildReview() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        // Text('เบอร์ติดต่อ: '),
+        TextButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ShowEditReview()));
+          },
+          child: Text('รีวว'),
+        ),
+      ],
     );
   }
 
@@ -215,7 +233,7 @@ class _ShowProductState extends State<ShowProduct> {
         ),
       ].toSet();
   //  ส่วนของหน้าต่าง โชว์ googleMap
-  
+
   Widget showMap() => Container(
         width: double.infinity,
         height: 300,
@@ -223,10 +241,10 @@ class _ShowProductState extends State<ShowProduct> {
             ? ShowProgress()
             : GoogleMap(
                 myLocationEnabled: true,
-                initialCameraPosition:  CameraPosition(
+                initialCameraPosition: CameraPosition(
                     // target: latLng!,
                     target: LatLng(
-                       double.parse(
+                      double.parse(
                         userModel2!.lat.toString(),
                       ),
                       double.parse(

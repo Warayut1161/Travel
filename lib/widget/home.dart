@@ -96,7 +96,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Column(
               children: [
                 UserAccountsDrawerHeader(
-                    currentAccountPicture: profilePer == null
+                    currentAccountPicture: profilePer == ''
                         ? ShowProgress()
                         : CachedNetworkImage(
                             errorWidget: (context, url, error) =>
@@ -149,10 +149,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           //   icon: Icon(Icons.local_activity),
           //   label: 'สำหรับฉัน',
           // ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline),
-            label: 'รีวิว',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.add_circle_outline),
+          //   label: 'รีวิว',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark),
             label: 'ที่บันทึกไว้',

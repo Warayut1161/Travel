@@ -95,7 +95,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Column(
               children: [
                 UserAccountsDrawerHeader(
-                    currentAccountPicture: profilePer == null
+                    currentAccountPicture: profilePer == ''
                         ? Image.asset('images/logo.png')
                         : CachedNetworkImage(
                             errorWidget: (context, url, error) =>
@@ -110,19 +110,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     accountEmail: Row(
                       children: [
                         MyStyle().mySizebox(),
-                        // Text('Login',
-                        //     style: TextStyle(
-                        //         fontSize: 17,
-                        //         fontWeight: FontWeight.bold,
-                        //         color: Colors.black)),
-                        IconButton(
-                            icon: Icon(Icons.info),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => EditPF()));
-                            }),
+                        Text('Login',
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black)),
+                        // IconButton(
+                        //     icon: Icon(Icons.info),
+                        //     onPressed: () {
+                        //       Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //               builder: (context) => EditPF()));
+                        //     }),
                       ],
                     )),
                 menuShowOrder(),
@@ -254,7 +254,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const ShowEditshop()),
-            
           );
         });
       },

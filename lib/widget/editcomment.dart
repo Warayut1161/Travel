@@ -1,18 +1,25 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:login/utility/my_style.dart';
 
-// class ShowEditshop extends StatefulWidget {
-//   const ShowEditshop({ Key? key }) : super(key: key);
+class ShowEditReview extends StatefulWidget {
+  const ShowEditReview({Key? key}) : super(key: key);
 
-//   @override
-//   State<ShowEditshop> createState() => _ShowEditshopState();
-// }
+  @override
+  State<ShowEditReview> createState() => _ShowEditReviewState();
+}
 
-// class _ShowEditshopState extends State<ShowEditshop> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('รีวิวสินค้า'),)
-      
-//     );
-//   }
-// }
+class _ShowEditReviewState extends State<ShowEditReview> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('รีวิว'),
+      ),
+      body: Text(
+        'รายละเอียด',
+        style: TextStyle(
+            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+      ),
+    );
+  }
+}

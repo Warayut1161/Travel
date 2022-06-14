@@ -29,10 +29,25 @@ class _NewhomeState extends State<Newhome> {
     readApiAll();
   }
 
-  
+  //-----------------------ส่วนเก็บข้อมูลตัวค้นหา----------------------------//
+  Future<Null> getSearch() async {
+    String api =
+        'https://travel1997zz.000webhostapp.com/API2/search_name.php'; //ลิงค์ api
 
+    await Dio().get(api).then((value) {
+      if (value.toString() != 'null') {
+        for (var item in json.decode(value.data)) {
+          UserModel2 userModel =
+              UserModel2.fromJson(item); // Map ใส่ model ที่เราจะเก็บไว้
+          setState(() {
+            userModels.add(userModel); // แอดใส่ list ที่เราสร้าง
+          });
+        }
+      }
+    });
+  }
 
-
+  //----------------------------------------------------------------//
   Future<Null> readApiAll() async {
     String urlAPI =
         'https://travel1997zz.000webhostapp.com/API2/getUserWhereIdcom.php';
@@ -56,7 +71,6 @@ class _NewhomeState extends State<Newhome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: GridView.builder(
         itemCount: userModels.length,
         gridDelegate:
@@ -92,6 +106,7 @@ class _NewhomeState extends State<Newhome> {
           ),
         ),
       ),
+      //-----------------------ค้นหา---------------------//
       appBar: AppBar(
         title: searching! ? searchField() : Text(''),
         actions: [
