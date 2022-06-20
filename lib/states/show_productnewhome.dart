@@ -106,6 +106,13 @@ class _ShowProductState extends State<ShowProduct> {
           child: Column(
             children: [
               showImage(),
+              // IconButton(
+              //     onPressed: () {},
+              //     icon: Icon(
+              //       Icons.bookmark_border,
+              //       size: 36,
+              //       color: Colors.black26,
+              //     )),
               Text(
                 'รายละเอียด',
                 style: TextStyle(
@@ -193,7 +200,7 @@ class _ShowProductState extends State<ShowProduct> {
                         ? ''
                         : 'แฟนเพจ: ${userModel2!.linkWeb.toString()},',
                     style: TextStyle(fontSize: 15, color: Colors.black),
-                  ),
+                  )
                 ],
               ),
               buildReview(),
@@ -225,11 +232,12 @@ class _ShowProductState extends State<ShowProduct> {
   Set<Marker> setMarker() => <Marker>[
         Marker(
           markerId: MarkerId('id'),
-          position: LatLng(double.parse(userModel2!.lat.toString()),
-              double.parse(userModel2!.lng.toString())),
+          position: LatLng(double.parse(userModel2!.latitude.toString()),
+              double.parse(userModel2!.longitude.toString())),
           infoWindow: InfoWindow(
               title: 'ตำแหน่ง',
-              snippet: 'Lat = ${userModel2!.lat}, lng = ${userModel2!.lng}'),
+              snippet:
+                  'Lat = ${userModel2!.latitude}, lng = ${userModel2!.longitude}'),
         ),
       ].toSet();
   //  ส่วนของหน้าต่าง โชว์ googleMap
@@ -245,10 +253,10 @@ class _ShowProductState extends State<ShowProduct> {
                     // target: latLng!,
                     target: LatLng(
                       double.parse(
-                        userModel2!.lat.toString(),
+                        userModel2!.latitude.toString(),
                       ),
                       double.parse(
-                        userModel2!.lng.toString(),
+                        userModel2!.longitude.toString(),
                       ),
                     ),
                     zoom: 16),

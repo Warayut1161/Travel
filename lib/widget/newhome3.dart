@@ -15,6 +15,7 @@ class _Newhome3State extends State<Newhome3> {
     return Scaffold(
       appBar: AppBar(
         title: Text('ที่บันทึกไว้'),
+        
       ),
     );
   }

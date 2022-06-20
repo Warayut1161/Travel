@@ -71,7 +71,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     //ทำอีกหน้าเพื่อมาโชว์
     Newhome(),
     // Newhome1(),
-    Newhome2(),
+    // Newhome2(),
     Newhome3(),
   ];
 

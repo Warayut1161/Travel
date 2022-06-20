@@ -19,8 +19,8 @@ class UserModel2 {
   String? imgProfile5;
   String? statusView;
   String? score;
-  String? lat;
-  String? lng;
+  String? latitude;
+  String? longitude;
 
   UserModel2({
     this.idTourist,
@@ -43,8 +43,8 @@ class UserModel2 {
     this.imgProfile5,
     this.statusView,
     this.score,
-    this.lat,
-    this.lng,
+    this.latitude,
+    this.longitude,
   });
 
   UserModel2.fromJson(Map<String, dynamic> json) {
@@ -68,8 +68,8 @@ class UserModel2 {
     imgProfile5 = json['img_profile5'];
     statusView = json['status_view'];
     score = json['score'];
-    lat = json['lat'];
-    lng = json['lng'];
+    latitude = json['latitude'];
+    longitude = json['longitude'];
   }
 
   Map<String, dynamic> toJson() {
@@ -94,8 +94,8 @@ class UserModel2 {
     data['img_profile5'] = this.imgProfile5;
     data['status_view'] = this.statusView;
     data['score'] = this.score;
-    data['lat'] = this.lat;
-    data['lng'] = this.lng;
+    data['latitude'] = this.latitude;
+    data['longitude'] = this.longitude;
     return data;
   }
 }

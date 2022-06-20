@@ -11,9 +11,7 @@ import 'package:login/widget/homeadmin.dart';
 import 'package:login/widget/homeshop.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 //-----------------หน้าล๊อคอิน-----------//
-
 
 class Authen extends StatefulWidget {
   const Authen({Key? key}) : super(key: key);
@@ -102,6 +100,10 @@ class _AuthenState extends State<Authen> {
           } else if (statusUser == '3') {
             routeTuService(HomeShop(), userModel);
           } else if (statusUser == '4') {
+            routeTuService(Home(), userModel);
+          } else if (statusUser == '5') {
+            routeTuService(Home(), userModel);
+          } else if (statusUser == '6') {
             routeTuService(Home(), userModel);
           } else {
             normalDialog(context, 'กรุณาลองใหม่');

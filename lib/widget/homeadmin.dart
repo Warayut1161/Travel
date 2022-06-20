@@ -70,7 +70,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     //ทำอีกหน้าเพื่อมาโชว์
     Newhome(),
     // Newhome1(),
-    Newhome2(),
+    // Newhome2(),
     Newhome3(),
   ];
 
@@ -149,10 +149,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           //   icon: Icon(Icons.local_activity),
           //   label: 'สำหรับฉัน',
           // ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline),
-            label: 'รีวิว',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.add_circle_outline),
+          //   label: 'รีวิว',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark),
             label: 'ที่บันทึกไว้',
