@@ -87,7 +87,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       appBar: AppBar(
         backgroundColor: MyStyle().primaryColor,
         title: Text(
-            nameUser == null ? 'BottomNavigationBar Sample' : 'ยินดีต้อนรับ'),
+            nameUser == '' ? 'BottomNavigationBar Sample' : 'ยินดีต้อนรับ'),
       ),
       drawer: Drawer(
         child: Stack(
@@ -231,7 +231,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return ListTile(
       onTap: () {
         setState(() {
-          _selectedIndex = 2;
+          _selectedIndex = 0;
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const ShowFestival()),

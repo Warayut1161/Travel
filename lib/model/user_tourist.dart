@@ -1,3 +1,11 @@
+import 'dart:convert';
+
+// List<UserModel2> productModelFromJson(String str) =>
+//     List<UserModel2>.from(json.decode(str).map((x) => UserModel2.fromJson(x)));
+
+// String productModelToJson(List<UserModel2> data) =>
+//     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class UserModel2 {
   String? idTourist;
   String? memberId;
@@ -46,6 +54,56 @@ class UserModel2 {
     this.latitude,
     this.longitude,
   });
+
+  // UserModel2 copyWith({
+  //   String? idTourist,
+  //   String? memberId,
+  //   String? idCom,
+  //   String? nameTra,
+  //   String? location,
+  //   String? price,
+  //   String? serviceRate,
+  //   String? timeOpen,
+  //   String? timeClose,
+  //   String? history,
+  //   String? contactTel,
+  //   String? detail,
+  //   String? linkWeb,
+  //   String? imgProfile,
+  //   String? imgProfile2,
+  //   String? imgProfile3,
+  //   String? imgProfile4,
+  //   String? imgProfile5,
+  //   String? statusView,
+  //   String? score,
+  //   String? latitude,
+  //   String? longitude,
+  // }) {
+  //   return UserModel2(
+  //     idTourist: idTourist ?? this.idTourist,
+  //     memberId: memberId ?? this.memberId,
+  //     idCom: idCom ?? this.idCom,
+  //     nameTra: nameTra ?? this.nameTra,
+  //     location: location ?? this.location,
+  //     price: price ?? this.price,
+  //     serviceRate: serviceRate ?? this.serviceRate,
+  //     timeOpen: timeOpen ?? this.timeOpen,
+  //     timeClose: timeClose ?? this.timeClose,
+  //     history: history ?? this.history,
+  //     contactTel: contactTel ?? this.contactTel,
+  //     detail: detail ?? this.detail,
+  //     linkWeb: linkWeb ?? this.linkWeb,
+  //     imgProfile: imgProfile ?? this.imgProfile,
+  //     imgProfile2: imgProfile2 ?? this.imgProfile2,
+  //     imgProfile3: imgProfile3 ?? this.imgProfile3,
+  //     imgProfile4: imgProfile4 ?? this.imgProfile4,
+  //     imgProfile5: imgProfile5 ?? this.imgProfile5,
+  //     statusView: statusView ?? this.statusView,
+  //     score: score ?? this.score,
+  //     latitude: latitude ?? this.latitude,
+  //     longitude: longitude ?? this.longitude,
+  //   );
+  // }
 
   UserModel2.fromJson(Map<String, dynamic> json) {
     idTourist = json['id_tourist'];
@@ -98,4 +156,122 @@ class UserModel2 {
     data['longitude'] = this.longitude;
     return data;
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id_tourist': idTourist,
+      'member_id': memberId,
+      'id_com': idCom,
+      'name_tra': nameTra,
+      'location': location,
+      'price': price,
+      'service_rate': serviceRate,
+      'time_open': timeOpen,
+      'time_close': timeClose,
+      'history': history,
+      'contact_tel': contactTel,
+      'detail': detail,
+      'link_web': linkWeb,
+      'img_profile': imgProfile,
+      'img_profile2': imgProfile2,
+      'img_profile3': imgProfile3,
+      'img_profile4': imgProfile4,
+      'img_profile5': imgProfile5,
+      'status_view': statusView,
+      'score': score,
+      'latitude': latitude,
+      'longitude': longitude,
+    };
+  }
+
+  // factory UserModel2.fromMap(Map<String, dynamic> map) {
+  //   return UserModel2(
+  //     idTourist: map['id_tourist'].toString(),
+  //     memberId: map['member_id'].toString(),
+  //     idCom: map['id_com'].toString(),
+  //     nameTra: map['name_tra'].toString(),
+  //     location: map['location'].toString(),
+  //     price: map['price'].toString(),
+  //     serviceRate: map['service_rate'].toString(),
+  //     timeOpen: map['time_open'].toString(),
+  //     timeClose: map['time_close'].toString(),
+  //     history: map['history'].toString(),
+  //     contactTel: map['contactTel'].toString(),
+  //     detail: map['detail'].toString(),
+  //     linkWeb: map['linkWeb'].toString(),
+  //     imgProfile: map['img_profile'].toString(),
+  //     imgProfile2: map['img_profile2'].toString(),
+  //     imgProfile3: map['img_profile3'].toString(),
+  //     imgProfile4: map['img_profile4'].toString(),
+  //     imgProfile5: map['img_profile5'].toString(),
+  //     statusView: map['status_view'].toString(),
+  //     score: map['score'].toString(),
+  //     latitude: map['latitude'].toString(),
+  //     longitude: map['longitude'].toString(),
+  //   );
+  // }
+
+  // String toJson() => json.encode(toMap());
+
+  // factory UserModel2.fromJson(String source) =>
+  //     UserModel2.fromMap(json.decode(source));
+
+  // @override
+  // String toString() {
+  //   return 'ProductModel(idTourist: $idTourist, memberId: $memberId, idCom: $idCom, nameTra: $nameTra, location: $location, price: $price, serviceRate: $serviceRate, timeOpen: $timeOpen, timeClose: $timeClose, history: $history , contactTel: $contactTel,detail: $detail,linkWeb: $linkWeb,imgProfile: $imgProfile,imgProfile: $imgProfile2,imgProfile3: $imgProfile3,imgProfile4: $imgProfile4,imgProfile5: $imgProfile5,statusView: $statusView,score: $score,latitude: $latitude,longitude: $longitude)';
+  // }
+
+  // @override
+  // bool operator ==(Object other) {
+  //   if (identical(this, other)) return true;
+
+  //   return other is UserModel2 &&
+  //       other.idTourist == idTourist &&
+  //       other.memberId == memberId &&
+  //       other.nameTra == nameTra &&
+  //       other.location == location &&
+  //       other.price == price &&
+  //       other.serviceRate == serviceRate &&
+  //       other.timeOpen == timeOpen &&
+  //       other.timeClose == timeClose &&
+  //       other.history == history &&
+  //       other.contactTel == contactTel &&
+  //       other.detail == detail &&
+  //       other.linkWeb == linkWeb &&
+  //       other.imgProfile == imgProfile &&
+  //       other.imgProfile2 == imgProfile2 &&
+  //       other.imgProfile3 == imgProfile3 &&
+  //       other.imgProfile4 == imgProfile4 &&
+  //       other.imgProfile5 == imgProfile5 &&
+  //       other.statusView == statusView &&
+  //       other.score == score &&
+  //       other.latitude == latitude &&
+  //       other.longitude == longitude;
+  // }
+
+  // @override
+  // int get hashCode {
+  //   return idTourist.hashCode ^
+  //       memberId.hashCode ^
+  //       idCom.hashCode ^
+  //       nameTra.hashCode ^
+  //       location.hashCode ^
+  //       price.hashCode ^
+  //       serviceRate.hashCode ^
+  //       timeOpen.hashCode ^
+  //       timeClose.hashCode ^
+  //       history.hashCode ^
+  //       contactTel.hashCode ^
+  //       detail.hashCode ^
+  //       linkWeb.hashCode ^
+  //       imgProfile.hashCode ^
+  //       imgProfile2.hashCode ^
+  //       imgProfile3.hashCode ^
+  //       imgProfile4.hashCode ^
+  //       imgProfile5.hashCode ^
+  //       statusView.hashCode ^
+  //       score.hashCode ^
+  //       latitude.hashCode ^
+  //       longitude.hashCode;
+  // }
 }

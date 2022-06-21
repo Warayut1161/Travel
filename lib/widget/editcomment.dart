@@ -13,6 +13,8 @@ class ShowEditReview extends StatefulWidget {
 
 File? file;
 final formKey = GlobalKey<FormState>();
+TextEditingController nameController = TextEditingController();
+TextEditingController detail_comment = TextEditingController();
 
 class _ShowEditReviewState extends State<ShowEditReview> {
   Row builName(double size) {
@@ -21,6 +23,7 @@ class _ShowEditReviewState extends State<ShowEditReview> {
         margin: EdgeInsets.only(top: 16),
         width: size * 0.6,
         child: TextFormField(
+          controller: nameController,
           validator: (value) {
             if (value!.isEmpty) {
               return 'กรุณากรอก Name';
@@ -49,6 +52,7 @@ class _ShowEditReviewState extends State<ShowEditReview> {
         margin: EdgeInsets.only(top: 16),
         width: size * 0.6,
         child: TextFormField(
+          controller: detail_comment,
           validator: (value) {
             if (value!.isEmpty) {
               return 'กรุณากรอก รายละเอียด';
@@ -81,7 +85,6 @@ class _ShowEditReviewState extends State<ShowEditReview> {
     return Scaffold(
       appBar: AppBar(
         title: Text('รีวิว'),
-        
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
@@ -110,13 +113,21 @@ class _ShowEditReviewState extends State<ShowEditReview> {
     return RaisedButton(
       color: MyStyle().darkColor,
       onPressed: () {
-        if (formKey.currentState!.validate()) {}
+        if (formKey.currentState!.validate()) {
+          uploadpictureAndInsertData();
+        }
       },
       child: Text(
         'บันทึก',
         style: TextStyle(color: Colors.white),
       ),
     );
+  }
+
+  Future<Null> uploadpictureAndInsertData() async {
+    String name = nameController.text;
+    String details = detail_comment.text;
+    print('## name = $name, detail_comment = $details');
   }
 
   Future<Null> chooseImage(ImageSource source) async {

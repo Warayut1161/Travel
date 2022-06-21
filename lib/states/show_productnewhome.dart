@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:login/model/user_showsearch.dart';
 import 'package:login/model/user_tourist.dart';
 import 'package:login/utility/my_dialog.dart';
 import 'package:login/utility/my_style.dart';
@@ -10,6 +11,7 @@ import 'package:login/widget/show_progress.dart';
 //----------------หน้าต่างโชว์หน้าของรายละเอียดร้านค้า-------------------------//
 class ShowProduct extends StatefulWidget {
   final UserModel2 userModel2;
+
   const ShowProduct({Key? key, required this.userModel2}) : super(key: key);
 
   @override
@@ -121,7 +123,7 @@ class _ShowProductState extends State<ShowProduct> {
                     color: Colors.black),
               ),
               Text(
-                userModel2 == null ? '' : userModel2!.history.toString(),
+                userModel2 == '' ? '' : userModel2!.history.toString(),
                 style: TextStyle(fontSize: 15, color: Colors.black),
               ),
               MyStyle().mySizebox(),
@@ -245,7 +247,7 @@ class _ShowProductState extends State<ShowProduct> {
   Widget showMap() => Container(
         width: double.infinity,
         height: 300,
-        child: lat1 == null
+        child: lat1 == ''
             ? ShowProgress()
             : GoogleMap(
                 myLocationEnabled: true,

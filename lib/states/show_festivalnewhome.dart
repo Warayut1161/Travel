@@ -113,7 +113,7 @@ class _ShowFestivalnewhomeState extends State<ShowFestivalnewhome> {
                     color: Colors.black),
               ),
               Text(
-                userModel2 == null ? '' : userModel2!.history.toString(),
+                userModel2 == '' ? '' : userModel2!.history.toString(),
                 style: TextStyle(fontSize: 15, color: Colors.black),
               ),
               MyStyle().mySizebox(),
@@ -204,16 +204,6 @@ class _ShowFestivalnewhomeState extends State<ShowFestivalnewhome> {
     );
   }
 
-  Set<Marker> setMarker() => <Marker>[
-        Marker(
-          markerId: MarkerId('id'),
-          position: LatLng(double.parse(userModel2!.latitude.toString()),
-              double.parse(userModel2!.longitude.toString())),
-          infoWindow: InfoWindow(
-              title: 'ตำแหน่ง',
-              snippet: 'Lat = ${userModel2!.latitude}, lng = ${userModel2!.longitude}'),
-        ),
-      ].toSet();
   //  ส่วนของหน้าต่าง โชว์ googleMap
   
   // Widget showMap() => Container(

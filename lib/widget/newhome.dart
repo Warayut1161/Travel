@@ -3,9 +3,12 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:login/model/user_showsearch.dart';
 import 'package:login/model/user_tourist.dart';
 import 'package:login/states/show_productnewhome.dart';
+import 'package:login/widget/TestBookmark.dart';
 import 'package:login/widget/newhome3.dart';
+import 'package:login/widget/showsearch.dart';
 
 //----------------ข้อมูลที่โชว์ของหน้าแรก------------------//
 
@@ -17,8 +20,10 @@ class Newhome extends StatefulWidget {
 }
 
 class _NewhomeState extends State<Newhome> {
+  dynamic test = 'ทดสอบๆ';
   bool load = true;
   List<UserModel2> userModels = [];
+  List<UserModel3> userModelss = [];
   TextEditingController editingController = TextEditingController();
   bool? searching;
   var data;
@@ -47,29 +52,16 @@ class _NewhomeState extends State<Newhome> {
     await Dio().get(api).then((value) {
       print(json.decode(value.toString()));
 
-      // setState(() {
-      //   load = false;
-      // });
-      // //print('value ==> $value');
-      // // var result = json.decode(value.data);
-      // for (var item in json.decode(value.data)) {
-      //   // print('item ==> $item');
-      //   UserModel2 userModel = UserModel2.fromJson(item);
-      //   // print('name ==> ${model.nameTra}');
-      //   setState(() {
-      //     userModels.add(userModel);
-      //   });
-      // }
+      print('$value.toString');
+      if (value != "null") {
+        for (var item in json.decode(value.data)) {
+          UserModel3 userModel = UserModel3.fromMap(item);
 
-      // if (value.toString() != Null) {
-      //   for (var item in json.decode(value.data)) {
-      //     UserModel2 userModel =
-      //         UserModel2.fromJson(item); // Map ใส่ model ที่เราจะเก็บไว้
-      //     setState(() {
-      //       userModels.add(userModel); // แอดใส่ list ที่เราสร้าง
-      //     });
-      //   }
-      // }
+          setState(() {
+            userModelss.add(userModel); // แอดใส่ list ที่เราสร้าง
+          });
+        }
+      }
     });
   }
 
@@ -151,7 +143,6 @@ class _NewhomeState extends State<Newhome> {
                   onPressed: () {
                     // setState(() {
                     setState(() {
-
                       if (alreadySaved) {
                         _saved.remove(context);
                       } else {
@@ -161,7 +152,6 @@ class _NewhomeState extends State<Newhome> {
                     print('_saved.add = $_saved.add');
                     print('_saved.remove = $_saved.remove');
                     print('alreadySaved = $alreadySaved');
-                  
 
                     //   if (alreadySaved == null) {}
                     //   // if (alreadySaved) {
@@ -187,7 +177,7 @@ class _NewhomeState extends State<Newhome> {
           ),
         ),
       ),
-      
+
       //-----------------------ค้นหา---------------------//
       appBar: AppBar(
         title: searching! ? searchField() : Text(''),
@@ -202,15 +192,16 @@ class _NewhomeState extends State<Newhome> {
                     getSearch();
                     editingController.clear();
                   }
+
                   // Navigator.push(
                   //     context,
                   //     MaterialPageRoute(
-                  //         builder: (context) => const Newhome3()));
+                  //         builder: (context) =>
+                  //             RandomWordsState(userModel: test)));
                 });
               }),
         ],
       ),
-      
     );
   }
 
